@@ -1,10 +1,1 @@
-1. Tiramisu ;
-2. Panna Cotta ;
-3. Zuppa Inglese ;
-4. Gianduiotti ;
-5. Strudel ;
-6. Sfogliatella Napoletana ;
-7. Cannolo Siciliano ;
-8. Amaretti ;
-9. Torrone ;
-10. Crostata ;
+2
