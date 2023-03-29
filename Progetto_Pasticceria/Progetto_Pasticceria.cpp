@@ -3,6 +3,12 @@
 #include <string>
 using namespace std;
 
+struct ingredienti {
+	string nome;
+	int quantita;
+};
+
+ingredienti ing[100];
 
 void StampaMenu()
 {
@@ -26,11 +32,21 @@ void Aggiungi(string dolagg)
 {
 	string m;
 	ofstream fout("menu.txt", ios::app);
-	fout << dolagg;
+	fout << dolagg << " ;" << endl;
 	fout.close();
-	ofstream fout("ricette.txt");
-	fout << dolagg;
+}
+
+void Replace()
+{
+	string m;
+	ifstream fin("appoggio.txt");
+	ofstream fout("menu.txt");
+	while (fin >> m)
+	{
+		fout << m << endl;
+	}
 	fout.close();
+	fin.close();
 }
 
 void Cancella(string dolagg) 
@@ -42,46 +58,71 @@ void Cancella(string dolagg)
 	{
 		if (m != dolagg) 
 		{
-			fout << m;
+			fout << m << endl;
 		}
 	}
 	fout.close();
 	fin.close();
-	ifstream fout("menu.txt");
-	ofstream fin("appoggio.txt");
-	while (fin >> m)
-	{
-		fout << m;
-	}
-	fout.close();
-	fin.close();
-
+	Replace();
 }
 
 void Dispensa()
 {
 	string m;
 	ofstream fout("dispensa.txt");
+	ifstream fin("ricette.txt");
+	while (fin >> m)
+	{
 
+	}
 	fout.close();
+}
+
+void Caricamento()
+{
+	string m;
+	ifstream fin("ricette.txt");
+	while (fin >> m)
+	{
+		int j = 0;
+		int pos = 0;
+		for (int i = 0; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				pos = i;
+			}
+		}
+		ing[j].nome = m.substr(0, pos);
+		ing[j].quantita = stoi(m.substr(pos));
+		j++;
+		cout << ing[j].nome << " " << ing[j].quantita << endl;
+	}
+	fin.close();
+}
+
+void Ordinazione(string dolce)
+{
+
 }
 
 int main()
 {
 	int scelta, dolce, quantita;
-	string dolagg;
-	//opzioni
-	cout << "1. Aggiungi un dolce" << endl;
-	cout << "2. Cancella un dolce" << endl;
-	cout << "3. Visualizza il menu" << endl;
-	cout << "4. Ordina un dolce" << endl;
-	cout << "5. Visualizza la dispensa" << endl;
-	cout << "6. Visualizza la lista della spesa" << endl;
-	cin >> scelta;
-	//scelta
-	switch (scelta)
-	{
-		case 1 :
+	string dolagg, dol;
+	do {
+		//opzioni
+		cout << "1. Aggiungi un dolce" << endl;
+		cout << "2. Cancella un dolce" << endl;
+		cout << "3. Visualizza il menu" << endl;
+		cout << "4. Ordina un dolce" << endl;
+		cout << "5. Visualizza la dispensa" << endl;
+		cout << "6. Visualizza la lista della spesa" << endl;
+		cin >> scelta;
+		//scelta
+		switch (scelta)
+		{
+		case 1:
 			cout << "Inserisci il nome del dolce che vuoi aggiungere:" << endl;
 			cin >> dolagg;
 			Aggiungi(dolagg);
@@ -94,11 +135,12 @@ int main()
 		case 3:
 			cout << "Menu Pasticceria" << endl;
 			StampaMenu();
+			Caricamento();
 			break;
 		case 4:
 			cout << "Inserisci il dolce che vuoi ordinare: ";
 			cin >> dolce;
-			switch (dolce) 
+			switch (dolce)
 			{
 			case 1:
 				string m = "ciao";
@@ -121,6 +163,11 @@ int main()
 			cout << "Lista della Spesa";
 			//ListaSpesa
 			break;
-	}
+		case 0:
+			int a;
+			cin >> a;
+			break;
+		}
+	} while (scelta != 0);
 
 }
