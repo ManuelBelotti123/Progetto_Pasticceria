@@ -8,7 +8,8 @@ struct ingredienti {
 	int quantita;
 };
 
-ingredienti ing[100];
+const int l = 100;
+ingredienti ing[l];
 
 void StampaMenu()
 {
@@ -82,9 +83,10 @@ void Caricamento()
 {
 	string m;
 	ifstream fin("ricette.txt");
+	ofstream fout("dispensa.txt");
+	int j = 0;
 	while (fin >> m)
 	{
-		int j = 0;
 		int pos = 0;
 		for (int i = 0; i < m.length(); i++)
 		{
@@ -94,10 +96,19 @@ void Caricamento()
 			}
 		}
 		ing[j].nome = m.substr(0, pos);
-		ing[j].quantita = stoi(m.substr(pos));
+		ing[j].quantita = stoi(m.substr(pos + 1, m.length()));
+		for (int k = j; k < l; k++) 
+		{
+			if (ing[j].nome == ing[k].nome) 
+			{
+				ing[j].quantita = ing[j].quantita + ing[k].quantita;
+				cout << ing[j].nome << ';' << ing[j].quantita << endl;
+			}
+		}
+		fout << ing[j].nome + ';' + to_string(ing[j].quantita) << endl;
 		j++;
-		cout << ing[j].nome << " " << ing[j].quantita << endl;
 	}
+	fout.close();
 	fin.close();
 }
 

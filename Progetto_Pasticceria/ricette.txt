@@ -1,53 +1,53 @@
-savoiardi ; 10
-mascarpone ; 500
-uova ; 4
-zucchero ; 100
-tazza_caffe ; 1
-panna ; 500
-baccello_vaniglia ; 1
-zucchero ; 80
-gelatina_fogli ; 8
-uova ; 2
-farina ; 30
-fecola ; 30
-zucchero ; 60
-baccello_vaniglia ; 1
-cioccolato ; 200
-pasta_nocciole ; 100
-cioccolato ; 260
-nocciole ; 170
-zucchero ; 160
-burro ; 150
-uova ; 2
-farina ; 90
-cacao ; 20
-cioccolato ; 150
-burro ; 200
-zucchero ; 150
-farina ; 150
-cacao ; 30
-uova ; 4
-lievito ; 8
-mandorle ; 200
-zucchero ; 140
-zucchero_velo ; 125
-albumi ; 50
-farina ; 300
-zucchero ; 150
-burro ; 100
-uova ; 1
-tuorli ; 1
-lievito ; 5
-marmellata_ciliegie ; 1
-farina ; 300
-zucchero ; 150
-burro ; 100
-uova ; 1
-tuorli ; 1
-lievito ; 5
-marmellata_albicocca ; 1
-riso ; 100
-latte ; 600
-cardamomo ; 10
-zucchero ; 70
-pistacchi ; 30
+savoiardi;10
+mascarpone;500
+uova;4
+zucchero;100
+tazza_caffe;1
+panna;500
+baccello_vaniglia;1
+zucchero;80
+gelatina_fogli;8
+uova;2
+farina;30
+fecola;30
+zucchero;60
+baccello_vaniglia;1
+cioccolato;200
+pasta_nocciole;100
+cioccolato;260
+nocciole;170
+zucchero;160
+burro;150
+uova;2
+farina;90
+cacao;20
+cioccolato;150
+burro;200
+zucchero;150
+farina;150
+cacao;30
+uova;4
+lievito;8
+mandorle;200
+zucchero;140
+zucchero_velo;125
+albumi;50
+farina;300
+zucchero;150
+burro;100
+uova;1
+tuorli;1
+lievito;5
+marmellata_ciliegie;1
+farina;300
+zucchero;150
+burro;100
+uova;1
+tuorli;1
+lievito;5
+marmellata_albicocca;1
+riso;100
+latte;600
+cardamomo;10
+zucchero;70
+pistacchi;30
