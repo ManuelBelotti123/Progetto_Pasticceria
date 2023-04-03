@@ -79,12 +79,43 @@ void Dispensa()
 	fout.close();
 }
 
+void Aggiusta()
+{
+	ofstream fout("dispensa.txt");
+	ingredienti ing1[l];
+	int somma;
+	//stampa
+	cout << endl;
+	for (int i = 1; i < l; i++)
+	{
+		if (ing[i].nome == "")
+		{
+			break;
+		}
+		else 
+		{
+			for (int k = 0; k < l; k++) 
+			{
+				if (ing[i].nome == ing[k].nome) 
+				{
+					somma = ing[i].quantita + ing[k].quantita;
+				}
+			}
+			ing1[i].nome = ing[i].nome;
+			ing1[i].quantita = somma;
+		}
+		cout << ing1[i].nome << ';' << ing1[i].quantita << endl;
+	}
+	cout << endl;
+	fout.close();
+}
+
 void Caricamento()
 {
 	string m;
 	ifstream fin("ricette.txt");
-	ofstream fout("dispensa.txt");
 	int j = 0;
+	ingredienti ing1[l];
 	while (fin >> m)
 	{
 		int pos = 0;
@@ -97,18 +128,9 @@ void Caricamento()
 		}
 		ing[j].nome = m.substr(0, pos);
 		ing[j].quantita = stoi(m.substr(pos + 1, m.length()));
-		for (int k = j; k < l; k++) 
-		{
-			if (ing[j].nome == ing[k].nome) 
-			{
-				ing[j].quantita = ing[j].quantita + ing[k].quantita;
-				cout << ing[j].nome << ';' << ing[j].quantita << endl;
-			}
-		}
-		fout << ing[j].nome + ';' + to_string(ing[j].quantita) << endl;
 		j++;
 	}
-	fout.close();
+	Aggiusta();
 	fin.close();
 }
 
