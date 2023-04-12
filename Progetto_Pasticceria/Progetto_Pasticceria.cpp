@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 using namespace std;
 
 struct ingredienti {
@@ -83,28 +84,41 @@ void Aggiusta()
 {
 	ofstream fout("dispensa.txt");
 	ingredienti ing1[l];
-	int somma;
 	//stampa
 	cout << endl;
-	for (int i = 1; i < l; i++)
+	for (int i = 0; i < l; i++)
 	{
+		int somma = ing[i].quantita;
 		if (ing[i].nome == "")
 		{
 			break;
 		}
 		else 
 		{
-			for (int k = 0; k < l; k++) 
+			for (int k = i + 1; k < l; k++) 
 			{
 				if (ing[i].nome == ing[k].nome) 
 				{
-					somma = ing[i].quantita + ing[k].quantita;
+					somma = somma + ing[k].quantita;
 				}
 			}
-			ing1[i].nome = ing[i].nome;
-			ing1[i].quantita = somma;
+			for (int k = 0; k < l; k++) 
+			{
+				if (ing1[k].nome == "") 
+				{
+					ing1[k].nome = ing[i].nome;
+					ing1[k].quantita = ing[i].quantita;
+					break;
+				}
+			}
 		}
-		cout << ing1[i].nome << ';' << ing1[i].quantita << endl;
+	}
+	for (int i = 0; i < l; i++) 
+	{
+		if (ing1[i].nome != "") 
+		{
+			cout << ing1[i].nome << ';' << ing1[i].quantita << endl;
+		}
 	}
 	cout << endl;
 	fout.close();
@@ -144,6 +158,7 @@ int main()
 	int scelta, dolce, quantita;
 	string dolagg, dol;
 	do {
+		//system("CLS");
 		//opzioni
 		cout << "1. Aggiungi un dolce" << endl;
 		cout << "2. Cancella un dolce" << endl;
@@ -197,8 +212,6 @@ int main()
 			//ListaSpesa
 			break;
 		case 0:
-			int a;
-			cin >> a;
 			break;
 		}
 	} while (scelta != 0);
