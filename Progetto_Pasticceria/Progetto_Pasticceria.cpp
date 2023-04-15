@@ -11,6 +11,7 @@ struct ingredienti {
 
 const int l = 100;
 ingredienti ing[l];
+ingredienti ing1[l];
 
 void StampaMenu()
 {
@@ -72,10 +73,17 @@ void Dispensa()
 {
 	string m;
 	ofstream fout("dispensa.txt");
-	ifstream fin("ricette.txt");
-	while (fin >> m)
+	while (fout << m)
 	{
-
+		for (int i = 0; i < l; i++) 
+		{
+			if (ing1[i].nome == "")
+			{
+				break;
+			}
+			fout << ing1[i].nome << ';' << ing1[i].quantita << endl;
+		}
+		break;
 	}
 	fout.close();
 }
@@ -83,7 +91,6 @@ void Dispensa()
 void Aggiusta()
 {
 	ofstream fout("dispensa.txt");
-	ingredienti ing1[l];
 	//stampa
 	cout << endl;
 	for (int i = 0; i < l; i++)
@@ -104,10 +111,14 @@ void Aggiusta()
 			}
 			for (int k = 0; k < l; k++) 
 			{
-				if (ing1[k].nome == "") 
+				if (ing1[k].nome == ing[i].nome) 
+				{
+					break;
+				}
+				else if (ing1[k].nome == "")
 				{
 					ing1[k].nome = ing[i].nome;
-					ing1[k].quantita = ing[i].quantita;
+					ing1[k].quantita = somma;
 					break;
 				}
 			}
@@ -184,6 +195,7 @@ int main()
 			cout << "Menu Pasticceria" << endl;
 			StampaMenu();
 			Caricamento();
+			Dispensa();
 			break;
 		case 4:
 			cout << "Inserisci il dolce che vuoi ordinare: ";
