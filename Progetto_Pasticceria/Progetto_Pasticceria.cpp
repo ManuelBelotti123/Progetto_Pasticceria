@@ -9,9 +9,15 @@ struct ingredienti {
 	int quantita;
 };
 
+struct dolce {
+	string nome;
+	string ingredienti;
+};
+
 const int l = 100;
 ingredienti ing[l];
 ingredienti ing1[l];
+dolce dol[l];
 
 void StampaMenu()
 {
@@ -31,12 +37,20 @@ void StampaMenu()
 	fin.close();
 }
 
-void Aggiungi(string dolagg) 
+void Aggiungi(string dolagg, string ingred) 
 {
 	string m;
 	ofstream fout("menu.txt", ios::app);
 	fout << dolagg << " ;" << endl;
 	fout.close();
+	for (int i = 0; i < l; i++) 
+	{
+		if (dol[i].nome == "") 
+		{
+			dol[i].nome = dolagg;
+			dol[i].ingredienti = ingred;
+		}
+	}
 }
 
 void Replace()
@@ -124,13 +138,6 @@ void Aggiusta()
 			}
 		}
 	}
-	for (int i = 0; i < l; i++) 
-	{
-		if (ing1[i].nome != "") 
-		{
-			cout << ing1[i].nome << ';' << ing1[i].quantita << endl;
-		}
-	}
 	cout << endl;
 	fout.close();
 }
@@ -167,7 +174,7 @@ void Ordinazione(string dolce)
 int main()
 {
 	int scelta, dolce, quantita;
-	string dolagg, dol;
+	string dolagg, ingred;
 	do {
 		//system("CLS");
 		//opzioni
@@ -184,10 +191,12 @@ int main()
 		case 1:
 			cout << "Inserisci il nome del dolce che vuoi aggiungere:" << endl;
 			cin >> dolagg;
-			Aggiungi(dolagg);
+			cout << "Inserisci gli ingredienti necessari alla preparazione" << endl;
+			cin >> ingred;
+			Aggiungi(dolagg, ingred);
 			break;
 		case 2:
-			cout << "Inserisci il nome del dolce che vuoi aggiungere:" << endl;
+			cout << "Inserisci il nome del dolce che vuoi cancellare:" << endl;
 			cin >> dolagg;
 			Cancella(dolagg);
 			break;
