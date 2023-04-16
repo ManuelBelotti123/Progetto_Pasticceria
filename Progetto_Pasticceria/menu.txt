@@ -1,10 +1,10 @@
-Tiramisu ;
-Panna Cotta ;
-Zuppa Inglese ;
-Gianduiotti ;
-Strudel ;
-Sfogliatella Napoletana ;
-Cannolo Siciliano ;
-Amaretti ;
-Torrone ;
-Crostata ;
+Tiramisu
+Panna_Cotta
+Zuppa_Inglese
+Gianduiotti
+Brownies
+Torta_Cioccolato
+Pancake
+Amaretti
+Crostata
+Kheer
