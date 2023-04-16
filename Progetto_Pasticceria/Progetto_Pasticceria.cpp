@@ -20,10 +20,10 @@ ingredienti ing[l];
 ingredienti ing1[l];
 dolce dol[l];
 
-void StampaMenu()
+void StampaFile(string nomefile)
 {
 	string m;
-	ifstream fin("menu.txt");
+	ifstream fin(nomefile);
 	while (fin >> m) 
 	{ 
 
@@ -126,6 +126,10 @@ void Aggiusta()
 			}
 		}
 	}
+	for (int i = 0; i < l; i++)
+	{
+		cout << ing[i].nome << ';' << ing[i].quantita << ';' << ing[i].dolce << endl;
+	}
 	//stampaprova
 	for (int i = 0; i < l; i++)
 	{
@@ -154,7 +158,7 @@ void Caricamento()
 			}
 		}
 		ing[j].nome = m.substr(0, pos);
-		for (int i = pos; i < m.length(); i++)
+		for (int i = pos + 1; i < m.length(); i++)
 		{
 			if (m[i] == ';')
 			{
@@ -170,18 +174,41 @@ void Caricamento()
 	fin.close();
 }
 
-void Ordinazione(string dolce)
+void OrdSpesa(string dol, int numd)
 {
-
+	int diff;
+	ofstream fout("listaspesa.txt");
+	ofstream fout1("dispensa.txt");
+	for (int i = 0; i < l; i++)
+	{
+		if (ing[i].dolce == dol)
+		{
+			if (ing1[i].quantita >= ing[i].quantita * numd)
+			{
+				ing1[i].quantita = ing1[i].quantita - ing[i].quantita * numd;
+			}
+			else
+			{
+				diff = ing[i].quantita * numd - ing1[i].quantita;
+				fout << ing1[i].nome << ';' << diff << endl;
+			}
+		}
+	}
+	for (int i = 0; i < l; i++) 
+	{
+		cout << ing1[i].nome << ';' << ing1[i].quantita << ';' << ing1[i].dolce;
+	}
+	fout.close();
 }
 
 int main()
 {
-	int scelta, dolce, quantita;
-	string dolagg, ingred;
+	int scelta, numd, quantita, b;
+	string dolagg, ingred, dol;
 	do {
-		//system("CLS");
+		system("CLS");
 		//opzioni
+		cout << "Pasticceria" << endl;
 		cout << "1. Aggiungi un dolce" << endl;
 		cout << "2. Cancella un dolce" << endl;
 		cout << "3. Ordina un dolce" << endl;
@@ -198,36 +225,52 @@ int main()
 			cout << "Inserisci gli ingredienti necessari alla preparazione" << endl;
 			cin >> ingred;
 			Aggiungi(dolagg, ingred);
-			break;
+			cin >> b;
+			if (b == 0) 
+			{
+				break;
+			}
 		case 2:
 			cout << "Inserisci il nome del dolce che vuoi cancellare:" << endl;
 			cin >> dolagg;
 			Cancella(dolagg);
-			break;
+			cin >> b;
+			if (b == 0)
+			{
+				break;
+			}
 		case 3:
 			cout << "Menu Pasticceria:" << endl;
-			StampaMenu();
+			StampaFile("menu.txt");
 			Caricamento();
 			Dispensa();
 			//...
 			cout << "Inserisci il dolce che vuoi ordinare: ";
-			cin >> dolce;
-			cout << "Inserisci il numero di " << dolce << " che vuoi ordinare : ";
-			cin >> dolce;
-			switch (dolce)
+			cin >> dol;
+			cout << "Inserisci il numero di " << dol << " che vuoi ordinare : ";
+			cin >> numd;
+			OrdSpesa(dol, numd);
+			cin >> b;
+			if (b == 0)
 			{
-				case 1:
-					break;
+				break;
 			}
-			break;
 		case 4:
-			cout << "Dispensa";
-			//fout...
-			break;
+			cout << "Dispensa" << endl;
+			StampaFile("dispensa.txt");
+			cin >> b;
+			if (b == 0)
+			{
+				break;
+			}
 		case 5:
-			cout << "Lista della Spesa";
-			//ListaSpesa
-			break;
+			cout << "Lista della Spesa" << endl;
+			StampaFile("listaspesa.txt");
+			cin >> b;
+			if (b == 0)
+			{
+				break;
+			}
 		case 0:
 			break;
 		}

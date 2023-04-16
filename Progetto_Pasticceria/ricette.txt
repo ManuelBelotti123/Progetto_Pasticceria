@@ -1,8 +1,8 @@
-savoiardi;10;tiramisu
-mascarpone;500;tiramisu
-uova;4;tiramisu
-zucchero;100;tiramisu
-tazza_caffe;1;tiramisu
+savoiardi;10;Tiramisu
+mascarpone;500;Tiramisu
+uova;4;Tiramisu
+zucchero;100;Tiramisu
+tazza_caffe;1;Tiramisu
 panna;500;Panna_Cotta
 baccello_vaniglia;1;Panna_Cotta
 zucchero;80;Panna_Cotta
