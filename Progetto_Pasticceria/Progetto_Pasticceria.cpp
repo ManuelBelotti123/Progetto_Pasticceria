@@ -177,14 +177,20 @@ void OrdSpesa(string dol, int numd)
 	{
 		if (ing[i].dolce == dol)
 		{
-			if (ing1[i].quantita >= ing[i].quantita * numd)
+			for (int j = 0; j < l; j++) 
 			{
-				ing1[i].quantita = ing1[i].quantita - ing[i].quantita * numd;
-			}
-			else
-			{
-				diff = ing[i].quantita * numd - ing1[i].quantita;
-				fout << ing1[i].nome << ';' << diff << endl;
+				if (ing1[j].nome == ing[i].nome) 
+				{
+					if (ing1[j].quantita >= ing[i].quantita * numd)
+					{
+						ing1[j].quantita = ing1[j].quantita - ing[i].quantita * numd;
+					}
+					else
+					{
+						diff = ing[i].quantita * numd - ing1[j].quantita;
+						fout << ing1[j].nome << ';' << diff << endl;
+					}
+				}
 			}
 		}
 	}
