@@ -26,10 +26,13 @@ void StampaFile(string nomefile)
 	ifstream fin(nomefile);
 	while (fin >> m) 
 	{ 
-
+		if (m[0] == ';')
+		{
+			break;
+		}
 		cout << m << endl;
-
 	}
+	cout << endl;
 	fin.close();
 }
 
@@ -126,15 +129,6 @@ void Aggiusta()
 			}
 		}
 	}
-	for (int i = 0; i < l; i++)
-	{
-		cout << ing[i].nome << ';' << ing[i].quantita << ';' << ing[i].dolce << endl;
-	}
-	//stampaprova
-	for (int i = 0; i < l; i++)
-	{
-		cout << ing1[i].nome << ';' << ing1[i].quantita << endl;
-	}
 	cout << endl;
 	fout.close();
 }
@@ -178,7 +172,7 @@ void OrdSpesa(string dol, int numd)
 {
 	int diff;
 	ofstream fout("listaspesa.txt");
-	ofstream fout1("dispensa.txt");
+	ofstream fout1("dispensaagg.txt");
 	for (int i = 0; i < l; i++)
 	{
 		if (ing[i].dolce == dol)
@@ -196,7 +190,7 @@ void OrdSpesa(string dol, int numd)
 	}
 	for (int i = 0; i < l; i++) 
 	{
-		cout << ing1[i].nome << ';' << ing1[i].quantita << ';' << ing1[i].dolce;
+		fout1 << ing1[i].nome << ';' << ing1[i].quantita << endl;
 	}
 	fout.close();
 }
@@ -225,6 +219,7 @@ int main()
 			cout << "Inserisci gli ingredienti necessari alla preparazione" << endl;
 			cin >> ingred;
 			Aggiungi(dolagg, ingred);
+			cout << "Digitare '0 per continuare..." << endl;
 			cin >> b;
 			if (b == 0) 
 			{
@@ -234,6 +229,7 @@ int main()
 			cout << "Inserisci il nome del dolce che vuoi cancellare:" << endl;
 			cin >> dolagg;
 			Cancella(dolagg);
+			cout << "Digitare '0 per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
@@ -250,6 +246,11 @@ int main()
 			cout << "Inserisci il numero di " << dol << " che vuoi ordinare : ";
 			cin >> numd;
 			OrdSpesa(dol, numd);
+			cout << "Dispensa aggiornata" << endl;
+			StampaFile("dispensaagg.txt");
+			cout << "Lista della Spesa" << endl;
+			StampaFile("listaspesa.txt");
+			cout << "Digitare '0 per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
@@ -257,7 +258,8 @@ int main()
 			}
 		case 4:
 			cout << "Dispensa" << endl;
-			StampaFile("dispensa.txt");
+			StampaFile("dispensaagg.txt");
+			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
@@ -266,6 +268,7 @@ int main()
 		case 5:
 			cout << "Lista della Spesa" << endl;
 			StampaFile("listaspesa.txt");
+			cout << "Digitare '0 per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
