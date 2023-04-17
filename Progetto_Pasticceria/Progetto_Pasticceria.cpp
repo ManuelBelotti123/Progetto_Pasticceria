@@ -36,12 +36,15 @@ void StampaFile(string nomefile)
 	fin.close();
 }
 
-void Aggiungi(string dolagg, string ingred) 
+void Aggiungi(string dolagg, string ingred, int quantita) 
 {
 	string m;
 	ofstream fout("menu.txt", ios::app);
+	ofstream fout1("ricette.txt", ios::app);
 	fout << dolagg << endl;
+	fout1 << ingred << ';' << quantita << ';' << dolagg << endl;
 	fout.close();
+
 }
 
 void Replace()
@@ -72,6 +75,11 @@ void Cancella(string dolagg)
 	fout.close();
 	fin.close();
 	Replace();
+}
+
+void Modifica() 
+{
+
 }
 
 void Dispensa()
@@ -215,22 +223,30 @@ int main()
 		system("CLS");
 		//opzioni
 		cout << "Pasticceria" << endl;
-		cout << "1. Aggiungi un dolce" << endl;
-		cout << "2. Cancella un dolce" << endl;
+		cout << "1. Aggiungi un dolce sulla lista" << endl;
+		cout << "2. Cancella un dolce sulla lista" << endl;
+		cout << "3. Modifica un dolce sulla lista" << endl;
 		cout << "3. Ordina un dolce" << endl;
 		cout << "4. Visualizza la dispensa" << endl;
 		cout << "5. Visualizza la lista della spesa" << endl;
+		cout << "6. Cancella la lista della spesa" << endl;
 		cout << "0. Esci dal programma" << endl;
 		cin >> scelta;
 		//scelta
 		switch (scelta)
 		{
 		case 1:
-			cout << "Inserisci il nome del dolce che vuoi aggiungere:" << endl;
+			cout << "Inserisci il nome del dolce che vuoi aggiungere: " << endl;
 			cin >> dolagg;
-			cout << "Inserisci gli ingredienti necessari alla preparazione" << endl;
-			cin >> ingred;
-			Aggiungi(dolagg, ingred);
+			do {
+				cout << "Inserisci un ingrediente: " << endl;
+				cin >> ingred;
+				cout << "Inserisci la sua quantita: " << endl;
+				cin >> quantita;
+				cout << "Vuoi inserire un altro ingrediente? (immettere '0' per uscire): ";
+				cin >> v;
+				Aggiungi(dolagg, ingred, quantita);
+			} while (v != 0);
 			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0) 
@@ -258,7 +274,7 @@ int main()
 				cin >> dol;
 				cout << "Inserisci il numero di " << dol << " che vuoi ordinare: ";
 				cin >> numd;
-				cout << "Vuoi ordinare altro? (immettere '0' per uscire)";
+				cout << "Vuoi ordinare altro? (immettere '0' per uscire): ";
 				cin >> v;
 				OrdSpesa(dol, numd);
 			} while (v != 0);
