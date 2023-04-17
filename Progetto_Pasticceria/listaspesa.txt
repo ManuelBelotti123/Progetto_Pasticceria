@@ -1,5 +1,0 @@
-farina;3180
-latte;5400
-burro;300
-uova;47
-lievito;167

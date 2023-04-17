@@ -1,7 +1,7 @@
 savoiardi;10
 mascarpone;500
 uova;15
-zucchero;460
+zucchero;925
 tazza_caffe;1
 panna;500
 baccello_vaniglia;2

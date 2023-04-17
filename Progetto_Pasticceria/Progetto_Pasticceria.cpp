@@ -171,7 +171,7 @@ void Caricamento()
 void OrdSpesa(string dol, int numd)
 {
 	int diff;
-	ofstream fout("listaspesa.txt");
+	ofstream fout("listaspesa.txt", ios::app);
 	ofstream fout1("dispensaagg.txt");
 	for (int i = 0; i < l; i++)
 	{
@@ -201,9 +201,15 @@ void OrdSpesa(string dol, int numd)
 	fout.close();
 }
 
+void CancContFile(string nomefile) 
+{
+	ofstream fout(nomefile);
+	fout.close();
+}
+
 int main()
 {
-	int scelta, numd, quantita, b;
+	int scelta, numd, quantita, b, v;
 	string dolagg, ingred, dol;
 	do {
 		system("CLS");
@@ -225,7 +231,7 @@ int main()
 			cout << "Inserisci gli ingredienti necessari alla preparazione" << endl;
 			cin >> ingred;
 			Aggiungi(dolagg, ingred);
-			cout << "Digitare '0 per continuare..." << endl;
+			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0) 
 			{
@@ -235,7 +241,7 @@ int main()
 			cout << "Inserisci il nome del dolce che vuoi cancellare:" << endl;
 			cin >> dolagg;
 			Cancella(dolagg);
-			cout << "Digitare '0 per continuare..." << endl;
+			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
@@ -247,16 +253,21 @@ int main()
 			Caricamento();
 			Dispensa();
 			//...
-			cout << "Inserisci il dolce che vuoi ordinare: ";
-			cin >> dol;
-			cout << "Inserisci il numero di " << dol << " che vuoi ordinare : ";
-			cin >> numd;
-			OrdSpesa(dol, numd);
+			do {
+				cout << "Inserisci il dolce che vuoi ordinare: ";
+				cin >> dol;
+				cout << "Inserisci il numero di " << dol << " che vuoi ordinare: ";
+				cin >> numd;
+				cout << "Vuoi ordinare altro? (immettere '0' per uscire)";
+				cin >> v;
+				OrdSpesa(dol, numd);
+			} while (v != 0);
+
 			cout << "Dispensa aggiornata" << endl;
 			StampaFile("dispensaagg.txt");
 			cout << "Lista della Spesa" << endl;
 			StampaFile("listaspesa.txt");
-			cout << "Digitare '0 per continuare..." << endl;
+			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
@@ -274,7 +285,17 @@ int main()
 		case 5:
 			cout << "Lista della Spesa" << endl;
 			StampaFile("listaspesa.txt");
-			cout << "Digitare '0 per continuare..." << endl;
+			cout << "Digitare '0' per continuare..." << endl;
+			cin >> b;
+			if (b == 0)
+			{
+				break;
+			}
+		case 6:
+			CancContFile("listaspesa.txt");
+			StampaFile("listaspesa.txt");
+			cout << "Cancellazione completata" << endl;
+			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
