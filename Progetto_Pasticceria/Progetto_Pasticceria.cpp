@@ -47,11 +47,11 @@ void Aggiungi(string dolagg, string ingred, int quantita)
 
 }
 
-void Replace()
+void Replace(string file1, string file2)
 {
 	string m;
-	ifstream fin("appoggio.txt");
-	ofstream fout("menu.txt");
+	ifstream fin(file1);
+	ofstream fout(file2);
 	while (fin >> m)
 	{
 		fout << m << endl;
@@ -74,12 +74,42 @@ void Cancella(string dolagg)
 	}
 	fout.close();
 	fin.close();
-	Replace();
+	Replace("appoggio.txt", "menu.txt");
 }
 
-void Modifica() 
+void Modifica(string dolR, string dolagg, int quantmod, string ingredmod) 
 {
-
+	string m;
+	ifstream fin("menu.txt");
+	ofstream fout("appoggio.txt");
+	ifstream fin1("ricette.txt");
+	ofstream fout1("appoggioR.txt");
+	while (fin >> m)
+	{
+		if (m != dolR)
+		{
+			fout << m << endl;
+		}
+		else 
+		{
+			fout << dolagg << endl;
+		}
+	}
+	Replace("appoggio.txt", "menu.txt");
+	while (fin1 >> m)
+	{
+		if (m != dolR)
+		{
+			fout1 << m << endl;
+		}
+		else
+		{
+			fout1 << ingredmod << ';' << quantmod << ';' << dolagg << endl;
+		}
+	}
+	Replace("appoggioR.txt", "ricette.txt");
+	fout.close();
+	fin.close();
 }
 
 void Dispensa()
@@ -218,7 +248,7 @@ void CancContFile(string nomefile)
 int main()
 {
 	int scelta, numd, quantita, b, v;
-	string dolagg, ingred, dol;
+	string dolagg, ingred, dol, dolR;
 	do {
 		system("CLS");
 		//opzioni
@@ -257,6 +287,20 @@ int main()
 			cout << "Inserisci il nome del dolce che vuoi cancellare:" << endl;
 			cin >> dolagg;
 			Cancella(dolagg);
+			cout << "Digitare '0' per continuare..." << endl;
+			cin >> b;
+			if (b == 0)
+			{
+				break;
+			}
+		case 7:
+			cout << "Inserisci il nome del dolce che vuoi modificare:" << endl;
+			cin >> dolR;
+			cout << "Inserisci il nuovo nome del dolce da modificare:" << endl;
+			cin >> dolagg;
+
+			cout << "Inserisci il nuovo nome dell'ingrediente del da modificare:" << endl;
+			cin >> dolagg;
 			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
