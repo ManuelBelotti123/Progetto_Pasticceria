@@ -60,11 +60,13 @@ void Replace(string file1, string file2)
 	fin.close();
 }
 
-void Cancella(string dolagg) 
+void Cancella(string dolagg)
 {
 	string m;
 	ifstream fin("menu.txt");
 	ofstream fout("appoggio.txt");
+	ifstream fin1("ricette.txt");
+	ofstream fout1("appoggioR.txt");
 	while (fin >> m) 
 	{
 		if (m != dolagg) 
@@ -72,12 +74,33 @@ void Cancella(string dolagg)
 			fout << m << endl;
 		}
 	}
+	Replace("appoggio.txt", "menu.txt");
+	int j = 0;
+	string dol[l];
+	while (fin1 >> m)
+	{
+		int pos = 0;
+		for (int i = 0; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				pos = i;
+			}
+		}
+		dol[j] = m.substr(pos + 1, m.length());
+		cout << dol[j];
+		if (dol[j] != dolagg)
+		{
+			fout1 << m << endl;
+		}
+		j++;
+	}
+	Replace("appoggioR.txt", "ricette.txt");
 	fout.close();
 	fin.close();
-	Replace("appoggio.txt", "menu.txt");
 }
 
-void Modifica(string dolR, string dolagg, int quantmod, string ingredmod) 
+void Modifica(string dolR, string dolagg) 
 {
 	string m;
 	ifstream fin("menu.txt");
@@ -96,18 +119,6 @@ void Modifica(string dolR, string dolagg, int quantmod, string ingredmod)
 		}
 	}
 	Replace("appoggio.txt", "menu.txt");
-	while (fin1 >> m)
-	{
-		if (m != dolR)
-		{
-			fout1 << m << endl;
-		}
-		else
-		{
-			fout1 << ingredmod << ';' << quantmod << ';' << dolagg << endl;
-		}
-	}
-	Replace("appoggioR.txt", "ricette.txt");
 	fout.close();
 	fin.close();
 }
@@ -256,10 +267,10 @@ int main()
 		cout << "1. Aggiungi un dolce sulla lista" << endl;
 		cout << "2. Cancella un dolce sulla lista" << endl;
 		cout << "3. Modifica un dolce sulla lista" << endl;
-		cout << "3. Ordina un dolce" << endl;
-		cout << "4. Visualizza la dispensa" << endl;
-		cout << "5. Visualizza la lista della spesa" << endl;
-		cout << "6. Cancella la lista della spesa" << endl;
+		cout << "4. Ordina un dolce" << endl;
+		cout << "5. Visualizza la dispensa" << endl;
+		cout << "6. Visualizza la lista della spesa" << endl;
+		cout << "7. Cancella la lista della spesa" << endl;
 		cout << "0. Esci dal programma" << endl;
 		cin >> scelta;
 		//scelta
@@ -293,21 +304,27 @@ int main()
 			{
 				break;
 			}
-		case 7:
+		case 3:
 			cout << "Inserisci il nome del dolce che vuoi modificare:" << endl;
 			cin >> dolR;
 			cout << "Inserisci il nuovo nome del dolce da modificare:" << endl;
 			cin >> dolagg;
-
-			cout << "Inserisci il nuovo nome dell'ingrediente del da modificare:" << endl;
-			cin >> dolagg;
+			do {
+				cout << "Inserisci un ingrediente: " << endl;
+				cin >> ingred;
+				cout << "Inserisci la sua quantita: " << endl;
+				cin >> quantita;
+				cout << "Vuoi inserire un altro ingrediente? (immettere '0' per uscire): ";
+				cin >> v;
+				Modifica(dolR, dolagg);
+			} while (v != 0);
 			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
 			if (b == 0)
 			{
 				break;
 			}
-		case 3:
+		case 4:
 			cout << "Menu Pasticceria:" << endl;
 			StampaFile("menu.txt");
 			Caricamento();
@@ -333,7 +350,7 @@ int main()
 			{
 				break;
 			}
-		case 4:
+		case 5:
 			cout << "Dispensa" << endl;
 			StampaFile("dispensaagg.txt");
 			cout << "Digitare '0' per continuare..." << endl;
@@ -342,7 +359,7 @@ int main()
 			{
 				break;
 			}
-		case 5:
+		case 6:
 			cout << "Lista della Spesa" << endl;
 			StampaFile("listaspesa.txt");
 			cout << "Digitare '0' per continuare..." << endl;
@@ -351,7 +368,7 @@ int main()
 			{
 				break;
 			}
-		case 6:
+		case 7:
 			CancContFile("listaspesa.txt");
 			StampaFile("listaspesa.txt");
 			cout << "Cancellazione completata" << endl;
