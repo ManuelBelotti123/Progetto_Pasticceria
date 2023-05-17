@@ -1,0 +1,24 @@
+.tabella{
+	display: table;
+	width: 80%;
+	margin: auto;
+	padding: 0px 50px 50px 50px;
+}
+
+.riga{ 
+	display: table-row; 
+}
+
+.colonna{
+	display: table-cell;
+	border: 1px solid grey;
+	padding: 0.5em 0 0.5em 0.5em;
+}
+.tab{
+	
+}
+body h1{
+	padding: 20px;
+	font-size: 50;
+	text-align: center;
+}

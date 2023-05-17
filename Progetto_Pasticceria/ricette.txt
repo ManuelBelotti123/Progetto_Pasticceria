@@ -50,3 +50,5 @@ latte;600;Kheer
 cardamomo;10;Kheer
 zucchero;70;Kheer
 pistacchi;30;Kheer
+Ciaone;32;Ciao
+Ciaone;324;Ciao
