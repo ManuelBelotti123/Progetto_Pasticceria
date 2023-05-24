@@ -265,17 +265,9 @@ void Dispensa(string filetesto, string filehtml)
 				break;
 			}
 			fout << ing1[i].nome << ';' << ing1[i].quantita << ';' << ing1[i].u << endl;
+			d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[i].nome + "</div><div class=\"colonna\">" + to_string(ing1[i].quantita) + "</div><div class=\"colonna\">" + ing1[i].u + "</div></div>";
 		}
 		break;
-	}
-	j = 0;
-	for (int i = 0; i < l; i++)
-	{
-		if (ing1[i].nome == "")
-		{
-			break;
-		}
-		d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[i].nome + "</div><div class=\"colonna\">" + to_string(ing1[i].quantita) + "</div><div class=\"colonna\">" + ing[i].u + "</div></div>";
 	}
 	string html = "<html><head><title>Pasticceria \"Elegante\"</title><link rel=\"stylesheet\" href=\"dispensastile.css\" type=\"text/css\"><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row; }.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Dispensa</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div></div>" + d + "</div></body></html>";
 	fout1 << html;
@@ -313,12 +305,12 @@ void Aggiusta()
 				{
 					ing1[k].nome = ing[i].nome;
 					ing1[k].quantita = somma;
+					ing1[k].u = ing[i].u;
 					break;
 				}
 			}
 		}
 	}
-
 	cout << endl;
 }
 
@@ -360,6 +352,7 @@ void Caricamento()
 		ing[j].quantita = stoi(m.substr(pos + 1, pos1));
 		ing[j].dolce = m.substr(pos1 + 1, posun - pos1 - 1);
 		ing[j].u = m.substr(posun + 1, m.length());
+		cout << ing[j].u;
 		j++;
 	}
 	Aggiusta();

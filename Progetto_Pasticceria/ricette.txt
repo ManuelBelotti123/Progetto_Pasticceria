@@ -1,7 +1,7 @@
 savoiardi;10;Tiramisu;u
-mascarpone;500;Tiramisu;u
+mascarpone;500;Tiramisu;g
 uova;4;Tiramisu;u
-zucchero;100;Tiramisu;u
+zucchero;100;Tiramisu;g
 tazza_caffe;1;Tiramisu;u
 panna;500;Panna_Cotta;g
 baccello_vaniglia;1;Panna_Cotta;u
