@@ -1,4 +1,3 @@
-riso;100
-latte;400
-cardamomo;10
-pistacchi;30
+savoiardi;100
+mascarpone;100
+tazza_caffe;100

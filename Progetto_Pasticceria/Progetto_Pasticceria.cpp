@@ -352,7 +352,6 @@ void Caricamento()
 		ing[j].quantita = stoi(m.substr(pos + 1, pos1));
 		ing[j].dolce = m.substr(pos1 + 1, posun - pos1 - 1);
 		ing[j].u = m.substr(posun + 1, m.length());
-		cout << ing[j].u;
 		j++;
 	}
 	Aggiusta();
@@ -374,6 +373,7 @@ void OrdSpesa(string dol, int numd)
 			{
 				if (ing1[j].nome == ing[i].nome) 
 				{
+					ing1[j].u = ing[i].u;
 					if (ing1[j].quantita >= ing[i].quantita * numd)
 					{
 						ing1[j].quantita = ing1[j].quantita - ing[i].quantita * numd;
@@ -381,8 +381,24 @@ void OrdSpesa(string dol, int numd)
 					else
 					{
 						diff = ing[i].quantita * numd - ing1[j].quantita;
+						if (diff > 0) 
+						{
+							diff = 100;
+						}
+						if (diff > 100)
+						{
+							diff = 1000;
+						}
+						if (diff > 1000)
+						{
+							diff = 5000;
+						}
+						if (diff > 5000)
+						{
+							diff = 10000;
+						}
 						fout << ing1[j].nome << ';' << diff << endl;
-						d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[j].nome + "</div><div class=\"colonna\">" + to_string(diff) + "</div><div class=\"colonna\">" + "u" + "</div></div>";
+						d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[j].nome + "</div><div class=\"colonna\">" + to_string(diff) + "</div><div class=\"colonna\">" + ing1[j].u + "</div></div>";
 					}
 				}
 			}
