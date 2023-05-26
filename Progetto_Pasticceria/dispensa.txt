@@ -22,4 +22,4 @@ tuorli;1;u
 marmellata_albicocca;1;u
 riso;100;g
 cardamomo;10;u
-pistacchi;30;g
+pistacchi;30;u

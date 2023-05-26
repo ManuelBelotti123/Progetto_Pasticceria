@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="immagini/fav.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&family=Tangerine&display=swap" rel="stylesheet">
+        <title>Pasticceria "Elegante"</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: sans-serif;
+            }
+
+            .hd {
+                position: sticky;
+                top:0;
+                overflow: hidden;
+                background-color: #f1f1f1;
+                padding: 10px 5px;
+            }
+
+            .hd a {
+                color: black;
+                text-align: center;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 32px;
+                line-height: 25px;
+                border-radius: 7px;
+                font-family: 'Nunito Sans', sans-serif;
+                font-family: 'Tangerine', cursive;
+                transition: ease 0.3s;
+            }
+
+            .hd h1 {
+                margin: 30px;
+                float: left;
+                font-size: 48px;
+                font-weight: bold;
+                font-family: 'Nunito Sans', sans-serif;
+                font-family: 'Tangerine', cursive;
+                line-height: 10px;
+            }
+
+            .hd a:hover {
+                background-color: #515151;
+                color: rgb(255, 255, 255);
+                transition: ease 0.3s;
+            }
+
+            .hd-menu {
+                float: right;
+                margin-right: 20px;
+                padding: 26px;
+            }
+
+            @media screen and (max-width: 600px) {
+                .hd a {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                }
+                .hd-right {
+                    float: none;
+                }
+            }
+
+            .centro {
+                padding-bottom: 100px;
+                height: auto;
+                text-align: center;
+                background-image: url(background.jpg);
+                background-size: 100%;
+            }
+
+            .car {
+                display: inline-block;
+                margin-top: 50px;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 30px;
+                border-radius: 10px;
+                width: 20%;
+                height: 200px;
+                background:rgb(137, 137, 137);
+                color: rgb(255, 255, 255);
+                box-shadow:rgb(56, 56, 56) 6px 4px;
+                transition: ease 0.3s;
+            }
+
+            .car img{
+                padding: 10px;
+            }
+
+            .car:hover {
+                box-shadow:rgb(66, 66, 66) 6px 4px;
+                background-color:rgb(216, 220, 185);
+                transition: ease 0.3s;
+            }
+
+            .coll {
+                width: 100%;
+                background-color: rgb(56, 56, 56);
+                color: white;
+                text-align: center;
+                padding-bottom: 20px;
+                padding-top: 20px;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+
+            .coll p {
+                padding-bottom: 10px;
+                padding-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hd">
+            <h1 style="margin-right: 10px;">Pasticceria</h1><h1 style="margin-left: 10px;">"Elegante"</h1>
+            <div class="hd-menu">
+              <a href="homepage.html">Home</a>
+              <a href="menu.html" target="_blank">Menu</a>
+              <a href="ordinazione.html" target="_blank">Ordinazioni</a>
+              <a href="ricette.html" target="_blank">Ingredienti</a>
+              <a href="istruzioni.htmls" target="_blank">Preparazioni</a>
+              <a href="dispensa.html" target="_blank">Dispensa</a>
+              <a href="listadellaspesa.html" target="_blank">Lista della Spesa</a>
+            </div>
+        </div>
+        <div class="centro">
+            <div style="display: block;">
+                <div class="car">
+                    <a href="menu.html" target="_blank"><img src="immagini/menuicon.png" width="150px"></a>
+                </div>
+                <div class="car">
+                    <a href="ordinazione.html" target="_blank"><img src="immagini/ordicon.png" width="150px"></a>
+                </div>
+                <div class="car">
+                    <a href="ricette.html" target="_blank"><img src="immagini/ingricon.png" width="150px"></a>
+                </div>
+            </div>
+            <div style="display: block;">
+                <div class="car">
+                    <a href="istruzioni.html" target="_blank"><img src="immagini/prepicon.png" width="150px"></a>
+                </div>
+                <div class="car">
+                    <a href="dispensa.html" target="_blank"><img src="immagini/dispicon.png" width="150px"></a>
+                </div>
+                <div class="car">
+                    <a href="listadellaspesa.html" target="_blank"><img src="immagini/spesaicon.png" width="150px"></a>
+                </div>
+            </div>
+        </div>
+        <div class="coll">
+            <p style="font-size: 30px; padding: 0px; padding-top: 20px;">Pasticceria Elegante</p>
+            <p>La Pasticceria Elegante propone varie specialità, esplorare il sito per maggiori informazioni</p>
+        </div>
+    </body>
+</html>
