@@ -23,12 +23,3 @@ marmellata_albicocca;1;u
 riso;100;g
 cardamomo;10;u
 pistacchi;30;g
-pane;100;g
-olio;32;ml
-fa;54;g
-tr;161;ml
-t;54;ml
-yt;32;g
-y;65;u
-qe;32;u
-g;87;g

@@ -50,14 +50,3 @@ latte;600;Kheer;ml
 cardamomo;10;Kheer;u
 zucchero;70;Kheer;g
 pistacchi;30;Kheer;g
-pane;100;Bread;g
-olio;32;Bread;ml
-fa;54;Farro;g
-tr;42;Farro;ml
-t;54;Ciaone;ml
-tr;65;Ciaone;u
-yt;32;Ciaone;g
-y;65;Eee;u
-tr;54;Eee;ml
-qe;32;Eee;u
-g;87;Eee;g

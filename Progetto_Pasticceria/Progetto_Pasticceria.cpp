@@ -534,24 +534,30 @@ void OrdSpesa(string dol, int numd)
 					}
 					else
 					{
+						int var;
 						diff = ing[i].quantita * numd - ing1[j].quantita;
-						if (diff > 0) 
+						if (diff > 0)
 						{
-							diff = 100;
+							var = 100;
 						}
 						if (diff > 100)
 						{
-							diff = 1000;
+							var = 1000;
 						}
 						if (diff > 1000)
 						{
-							diff = 5000;
+							var = 2000;
+						}
+						if (diff > 2000)
+						{
+							var = 5000;
 						}
 						if (diff > 5000)
 						{
-							diff = 10000;
+							var = 10000;
 						}
-						fout << ing1[j].nome << ';' << diff << endl;
+						diff = var;
+						fout << ing1[j].nome << ';' << diff << ';' << ing[i].u << endl;
 						d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[j].nome + "</div><div class=\"colonna\">" + to_string(diff) + "</div><div class=\"colonna\">" + ing1[j].u + "</div></div>";
 					}
 				}
@@ -588,7 +594,7 @@ void Ordinazionehtml(string dol, int numd)
 
 int main()
 {
-	int scelta, numd, quantita, b, v, a;
+	int scelta, numd, quantita, b, v;
 	string dolagg, ingred, dol, dolR, un, istr;
 	ofstream fout("ordinazione.html");
 	fout.close();
@@ -684,7 +690,6 @@ int main()
 				Ordinazionehtml(dol, numd);
 				OrdSpesa(dol, numd);
 			} while (v != 0);
-
 			cout << "Dispensa aggiornata" << endl;
 			StampaFile("dispensaagg.txt");
 			cout << "Lista della Spesa" << endl;
