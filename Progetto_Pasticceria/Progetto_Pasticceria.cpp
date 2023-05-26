@@ -117,13 +117,12 @@ void AggRicettehtml(string ingred, int quantita, string dolagg)
 		r[j].u = m.substr(posun + 1, m.length());
 		j++;
 	}
-	for (int i = 0; i < j; i++)
+	for (int k = 0; k < j; k++)
 	{
-		d = d + "<div class = \"riga\"><div class=\"colonna\">" + r[i].nome + "</div><div class = \"colonna\">" + to_string(r[i].quantita) + "</div><div class=\"colonna\">" + r[i].u + "</div><div class=\"colonna\">" + r[i].dolce + "</div></div>";
+		d = d + "<div class = \"riga\"><div class=\"colonna\">" + r[k].nome + "</div><div class = \"colonna\">" + to_string(r[k].quantita) + "</div><div class=\"colonna\">" + r[k].u + "</div><div class=\"colonna\">" + r[k].dolce + "</div></div>";
 	}
 	ofstream fout("ricette.html");
 	string html = "<html><head><title>Pasticceria Elegante</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row;}.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Ingredienti e Ricette</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div><div class=\"colonna\">Dolce</div></div>" + d + "</div></body></html>";
-	//string html = "<html><head><title>Pasticceria Elegante</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row;}.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Ingredienti e Ricette</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div><div class=\"colonna\">Dolce</div></div><div class=\"riga\"><div class=\"colonna\">savoiardi</div><div class=\"colonna\">10</div><div class=\"colonna\">u</div><div class=\"colonna\">Tiramisu</div></div><div class=\"riga\"><div class=\"colonna\">mascarpone</div><div class=\"colonna\">500</div><div class=\"colonna\">g</div><div class=\"colonna\">Tiramisu</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">4</div><div class=\"colonna\">u</div><div class=\"colonna\">Tiramisu</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">100</div><div class=\"colonna\">g</div><div class=\"colonna\">Tiramisu</div></div><div class=\"riga\"><div class=\"colonna\">tazza_caffe</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Tiramisu</div></div><div class=\"riga\"><div class=\"colonna\">panna</div><div class=\"colonna\">500</div><div class=\"colonna\">g</div><div class=\"colonna\">Panna_Cotta</div></div><div class=\"riga\"><div class=\"colonna\">baccello_vaniglia</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Panna_Cotta</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">80</div><div class=\"colonna\">g</div><div class=\"colonna\">Panna_Cotta</div></div><div class=\"riga\"><div class=\"colonna\">gelatina_fogli</div><div class=\"colonna\">8</div><div class=\"colonna\">u</div><div class=\"colonna\">Panna_Cotta</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">2</div><div class=\"colonna\">u</div><div class=\"colonna\">Zuppa_Inglese</div></div><div class=\"riga\"><div class=\"colonna\">farina</div><div class=\"colonna\">30</div><div class=\"colonna\">g</div><div class=\"colonna\">Zuppa_Inglese</div></div><div class=\"riga\"><div class=\"colonna\">fecola</div><div class=\"colonna\">30</div><div class=\"colonna\">g</div><div class=\"colonna\">Zuppa_Inglese</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">60</div><div class=\"colonna\">g</div><div class=\"colonna\">Zuppa_Inglese</div></div><div class=\"riga\"><div class=\"colonna\">baccello_vaniglia</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Zuppa_Inglese</div></div><div class=\"riga\"><div class=\"colonna\">cioccolato</div><div class=\"colonna\">200</div><div class=\"colonna\">g</div><div class=\"colonna\">Gianduiotti</div></div><div class=\"riga\"><div class=\"colonna\">pasta_nocciole</div><div class=\"colonna\">100</div><div class=\"colonna\">g</div><div class=\"colonna\">Gianduiotti</div></div><div class=\"riga\"><div class=\"colonna\">cioccolato</div><div class=\"colonna\">260</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">nocciole</div><div class=\"colonna\">170</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">160</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">burro</div><div class=\"colonna\">150</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">2</div><div class=\"colonna\">u</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">farina</div><div class=\"colonna\">90</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">cacao</div><div class=\"colonna\">20</div><div class=\"colonna\">g</div><div class=\"colonna\">Brownies</div></div><div class=\"riga\"><div class=\"colonna\">cioccolato</div><div class=\"colonna\">150</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">burro</div><div class=\"colonna\">200</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">150</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Cognome</div><div class=\"colonna\">Unità di misura</div><div class=\"colonna\">Dolce</div></div><div class=\"riga\"><div class=\"colonna\">farina</div><div class=\"colonna\">150</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">cacao</div><div class=\"colonna\">30</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">4</div><div class=\"colonna\">u</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">lievito</div><div class=\"colonna\">8</div><div class=\"colonna\">g</div><div class=\"colonna\">Torta_Cioccolato</div></div><div class=\"riga\"><div class=\"colonna\">farina</div><div class=\"colonna\">125</div><div class=\"colonna\">g</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">latte</div><div class=\"colonna\">200</div><div class=\"colonna\">ml</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">burro</div><div class=\"colonna\">25</div><div class=\"colonna\">g</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">15</div><div class=\"colonna\">g</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">2</div><div class=\"colonna\">u</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">lievito</div><div class=\"colonna\">6</div><div class=\"colonna\">g</div><div class=\"colonna\">Pancake</div></div><div class=\"riga\"><div class=\"colonna\">mandorle</div><div class=\"colonna\">200</div><div class=\"colonna\">g</div><div class=\"colonna\">Amaretti</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">140</div><div class=\"colonna\">g</div><div class=\"colonna\">Amaretti</div></div><div class=\"riga\"><div class=\"colonna\">zucchero_velo</div><div class=\"colonna\">125</div><div class=\"colonna\">g</div><div class=\"colonna\">Amaretti</div></div><div class=\"riga\"><div class=\"colonna\">albumi</div><div class=\"colonna\">50</div><div class=\"colonna\">g</div><div class=\"colonna\">Amaretti</div></div><div class=\"riga\"><div class=\"colonna\">farina</div><div class=\"colonna\">300</div><div class=\"colonna\">g</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">150</div><div class=\"colonna\">g</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">burro</div><div class=\"colonna\">100</div><div class=\"colonna\">g</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">uova</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">tuorli</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">lievito</div><div class=\"colonna\">5</div><div class=\"colonna\">g</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">marmellata_albicocca</div><div class=\"colonna\">1</div><div class=\"colonna\">u</div><div class=\"colonna\">Crostata</div></div><div class=\"riga\"><div class=\"colonna\">riso</div><div class=\"colonna\">100</div><div class=\"colonna\">g</div><div class=\"colonna\">Kheer</div></div><div class=\"riga\"><div class=\"colonna\">latte</div><div class=\"colonna\">600</div><div class=\"colonna\">ml</div><div class=\"colonna\">Kheer</div></div><div class=\"riga\"><div class=\"colonna\">cardamomo</div><div class=\"colonna\">10</div><div class=\"colonna\">u</div><div class=\"colonna\">Kheer</div></div><div class=\"riga\"><div class=\"colonna\">zucchero</div><div class=\"colonna\">70</div><div class=\"colonna\">g</div><div class=\"colonna\">Kheer</div></div><div class=\"riga\"><div class=\"colonna\">pistacchi</div><div class=\"colonna\">30</div><div class=\"colonna\">g</div><div class=\"colonna\">Kheer</div></div></div></body></html>";
 	fout << html;
 	fin.close();
 	fout.close();
@@ -173,17 +172,54 @@ void AggDisphtml()
 	fout.close();
 }
 
-void Aggiungi(string dolagg, string ingred, int quantita) 
+void AggiungiIstruzioni(string dol, string istr)
+{
+	ofstream fout("istruzioni.txt", ios::app);
+	istr = dol + ';' + istr;
+	fout << istr;
+	fout << endl;
+	fout.close();
+}
+
+void Aggiungi(string dolagg, string ingred, int quantita, string istr, string un)
 {
 	string m;
 	ofstream fout("menu.txt", ios::app);
 	ofstream fout1("ricette.txt", ios::app);
 	fout << dolagg << endl;
-	fout1 << ingred << ';' << quantita << ';' << dolagg << endl;
+	fout1 << ingred << ';' << quantita << ';' << dolagg << ';' << un << endl;
 	fout.close();
 	fout1.close();
 	AggMenuhtml(dolagg);
+	AggiungiIstruzioni(dolagg, istr);
 	AggRicettehtml(ingred, quantita, dolagg);
+}
+
+void CancellaIstruzioni(string dolagg) 
+{
+	string m, t;
+	ifstream fin("istruzioni.txt");
+	ofstream fout("appoggioR.txt");
+	while (fin >> m) 
+	{
+		int pos = 0;
+		for (int i = 0; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				pos = i;
+				break;
+			}
+		}
+		t = m.substr(0, pos);
+		if (t != dolagg) 
+		{
+			fout << m << endl;
+		}
+	}
+	fin.close();
+	fout.close();
+	Replace("appoggioR.txt", "istruzioni.txt");
 }
 
 void Cancella(string dolagg)
@@ -214,7 +250,6 @@ void Cancella(string dolagg)
 			}
 		}
 		dol[j] = m.substr(pos + 1, m.length());
-		cout << dol[j];
 		if (dol[j] != dolagg)
 		{
 			fout1 << m << endl;
@@ -224,6 +259,7 @@ void Cancella(string dolagg)
 	Replace("appoggioR.txt", "ricette.txt");
 	fout.close();
 	fin.close();
+	CancellaIstruzioni(dolagg);
 }
 
 void Modifica(string dolR, string dolagg) 
@@ -435,7 +471,7 @@ void Ordinazionehtml(string dol, int numd)
 int main()
 {
 	int scelta, numd, quantita, b, v;
-	string dolagg, ingred, dol, dolR;
+	string dolagg, ingred, dol, dolR, un, istr;
 	ofstream fout("ordinazione.html");
 	fout.close();
 	do {
@@ -457,14 +493,18 @@ int main()
 		case 1:
 			cout << "Inserisci il nome del dolce che vuoi aggiungere: " << endl;
 			cin >> dolagg;
+			cout << "Inserisci tutte le istruzioni: " << endl;
+			cin >> istr;
 			do {
 				cout << "Inserisci un ingrediente: " << endl;
 				cin >> ingred;
 				cout << "Inserisci la sua quantita: " << endl;
 				cin >> quantita;
+				cout << "Inserisci la sua unita di misura: " << endl;
+				cin >> un;
 				cout << "Vuoi inserire un altro ingrediente? (immettere '0' per uscire): ";
 				cin >> v;
-				Aggiungi(dolagg, ingred, quantita);
+				Aggiungi(dolagg, ingred, quantita, istr, un);
 			} while (v != 0);
 			cout << "Digitare '0' per continuare..." << endl;
 			cin >> b;
@@ -561,5 +601,5 @@ int main()
 			break;
 		}
 	} while (scelta != 0);
-
+	return 0;
 }
