@@ -512,6 +512,55 @@ void Caricamento()
 	fin.close();
 }
 
+void ListaSpesaHTML() {
+	string m, d;
+	ingredienti r[l];
+	ofstream fout2("listadellaspesa.html");
+	ifstream fin("listaspesa.txt");
+	int j = 0;
+	while (fin >> m)
+	{
+		int pos = 0;
+		int pos1 = 0;
+		int posun = 0;
+		for (int i = 0; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				pos = i;
+				break;
+			}
+		}
+		r[j].nome = m.substr(0, pos);
+		for (int i = pos + 1; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				pos1 = i;
+				break;
+			}
+		}
+		for (int i = 0; i < m.length(); i++)
+		{
+			if (m[i] == ';')
+			{
+				posun = i;
+			}
+		}
+		r[j].quantita = stoi(m.substr(pos + 1, pos1));
+		r[j].u = m.substr(posun + 1, m.length());
+		j++;
+	}
+	for (int i = 0; i < j; i++)
+	{
+		d = d + "<div class = \"riga\"><div class=\"colonna\">" + r[i].nome + "</div><div class=\"colonna\">" + to_string(r[i].quantita) + "</div><div class=\"colonna\">" + r[i].u + "</div></div>";
+	}
+	string html = "<html><head><title>Pasticceria \"Elegante\"</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row; }.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Lista della Spesa</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div></div>" + d + "</div></body></html>";
+	fout2 << html;
+	fout2.close();
+	fin.close();
+}
+
 void OrdSpesa(string dol, int numd)
 {
 	int diff;
@@ -556,9 +605,12 @@ void OrdSpesa(string dol, int numd)
 						{
 							var = 10000;
 						}
+						if (diff > 10000) 
+						{
+							var = diff;
+						}
 						diff = var;
 						fout << ing1[j].nome << ';' << diff << ';' << ing[i].u << endl;
-						d = d + "<div class = \"riga\"><div class=\"colonna\">" + ing1[j].nome + "</div><div class=\"colonna\">" + to_string(diff) + "</div><div class=\"colonna\">" + ing1[j].u + "</div></div>";
 					}
 				}
 			}
@@ -568,11 +620,9 @@ void OrdSpesa(string dol, int numd)
 	{
 		fout1 << ing1[i].nome << ';' << ing1[i].quantita << endl;
 	}
-	string html = "<html><head><title>Pasticceria \"Elegante\"</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row; }.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Lista della Spesa</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div></div>" + d + "</div></body></html>";
-	fout2 << html;
+	ListaSpesaHTML();
 	fout.close();
 	fout1.close();
-	fout2.close();
 	Dispensa("dispensaagg.txt", "dispensa.html");
 }
 
@@ -588,6 +638,13 @@ void Ordinazionehtml(string dol, int numd)
 	ofstream fout("ordinazione.html");
 	d = d + "<div class = \"riga\"><div class=\"colonna\">" + dol + "</div><div class=\"colonna\">" + to_string(numd) + "</div></div>";
 	string html = "<html><head><title>Pasticceria \"Elegante\"</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row; }.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Ordinazione</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div></div>" + d + "</div></body></html>";
+	fout << html;
+	fout.close();
+}
+
+void CancListaSpesaHTML() {
+	ofstream fout("listadellaspesa.html");
+	string html = "<html><head><title>Pasticceria \"Elegante\"</title><style>.tabella{display: table;width: 80%;margin: auto;padding: 0px 50px 50px 50px;}.riga{ display: table-row; }.colonna{display: table-cell;border: 1px solid grey;padding: 0.5em 0 0.5em 0.5em;}body h1{padding: 20px;font-size: 50;text-align: center;}</style></head><body><h1>Lista della Spesa</h1><div class=\"tabella\"><div class=\"riga\"><div class=\"colonna\">Nome</div><div class=\"colonna\">Quantità</div><div class=\"colonna\">Unità di misura</div></div></div></body></html>";
 	fout << html;
 	fout.close();
 }
@@ -720,6 +777,7 @@ int main()
 			}
 		case 7:
 			CancContFile("listaspesa.txt");
+			CancListaSpesaHTML();
 			StampaFile("listaspesa.txt");
 			cout << "Cancellazione completata" << endl;
 			cout << "Digitare '0' per continuare..." << endl;

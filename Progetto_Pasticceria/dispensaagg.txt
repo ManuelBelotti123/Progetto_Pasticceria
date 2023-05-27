@@ -1,7 +1,7 @@
 savoiardi;10;u
 mascarpone;500;g
 uova;15;u
-zucchero;925;g
+zucchero;645;g
 tazza_caffe;1;u
 panna;500;g
 baccello_vaniglia;2;u
@@ -22,5 +22,4 @@ tuorli;1;u
 marmellata_albicocca;1;u
 riso;100;g
 cardamomo;10;u
-pistacchi;30;u
-
+pistacchi;30;g
